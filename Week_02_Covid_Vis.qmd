@@ -1,7 +1,7 @@
 ---
 title: "Week 02: COVID Visualization Activity"
 date: "September, 11 2023"
-author: "**`[[`**Your Name**`]]`**"
+author: "Amisha Kumar"
 ---
 
 Today, we'll be working with a data set related to COVID.
@@ -36,6 +36,26 @@ covid_data_count |>
 ```
 
 1. Write code for a plot and describe what you observe?
+The largest number of death by COVID recorded is people of the white race and lowest is multiracial.
+
 2. Are there any conclusions you can draw?
+The largest number of deaths by COVID recorded by the COVID tracking project were of white people. 
+
 3. What were you not able to do due to not having the R knowledge?
+Removing "total" from the race column before making the bar chart
+
 4. What other data would be useful to better understand this data?
+The age groups of the populations
+
+```{r}
+load("CRDT Data.RData")
+```
+```{r}
+covid_data_long|>
+  filter(count_type == "Deaths")|> 
+  ggplot(aes(x = fct_infreq(race), fill =race)) + theme(legend.position = "none") + geom_bar() + labs(x="Race", y="Count by death", title= "COVID Death Count", caption = "data from https://covidtracking.com/")
+```
+
+
+
+
